@@ -10,15 +10,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc
+@AutoConfigureMockMvc
 public class TaskControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
+    @Test()
     public void testGetAllTasks() throws Exception {
-        mockMvc.perform(get("/tarefa"))
+        mockMvc.perform(get("/tarefas"))
                 .andExpect(status().isOk());
     }
 }
