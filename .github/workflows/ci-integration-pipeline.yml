@@ -5,6 +5,7 @@ on:
     branches:
       - develop
       - 'feature/**'
+      - master
   pull_request:
     branches:
       - develop
@@ -32,3 +33,10 @@ jobs:
       # Só chega aqui se os testes passarem
       - name: Garantir que compila (Build)
         run: mvn clean package -DskipTests
+      - name: Scan de Segurança no Código e Dependências (SCA)
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: 'fs' # Analisa arquivos da pasta
+          ignore-unfixed: true
+          format: 'table'
+          severity: 'CRITICAL,HIGH'
