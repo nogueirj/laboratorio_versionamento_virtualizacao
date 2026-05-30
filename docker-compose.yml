@@ -23,6 +23,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=admin_password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    healthcheck:
+      test: 
     depends_on:
       - postgres-db # Ordem de inicialização: A API só liga depois do banco
 
